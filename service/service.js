@@ -2,6 +2,8 @@ const dial = require("@patrickkfkan/peer-dial");
 const express = require('express');
 const cors = require('cors');
 const app = express();
+const MODULE_NAME = 'maxime-c16/TizenTube';
+const MODULE_TYPE = 'gh';
 
 const corsOptions = {
     origin: '*',
@@ -31,8 +33,8 @@ const apps = {
                     [
                         new tizen.ApplicationControlData("module", [JSON.stringify(
                             {
-                                moduleName: '@foxreis/tizentube',
-                                moduleType: 'npm',
+                                moduleName: MODULE_NAME,
+                                moduleType: MODULE_TYPE,
                                 args: launchData
                             }
                         )])

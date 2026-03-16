@@ -1,6 +1,7 @@
 import "./features/userAgentSpoofing.js";
 import "whatwg-fetch";
 import 'core-js/proposals/object-getownpropertydescriptors';
+import "./features/localSponsorBlockProxy.js";
 
 import './translations/index.js'
 import "./domrect-polyfill";
