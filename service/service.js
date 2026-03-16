@@ -2,7 +2,7 @@ const dial = require("@patrickkfkan/peer-dial");
 const express = require('express');
 const cors = require('cors');
 const app = express();
-const MODULE_NAME = 'maxime-c16/TizenTube';
+const MODULE_NAME = 'maxime-c16/TizenTube@v1.13.2-proxy2';
 const MODULE_TYPE = 'gh';
 
 const corsOptions = {

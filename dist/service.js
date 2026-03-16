@@ -49772,7 +49772,7 @@ var dial = peerDial;
 var express = express$1;
 var cors = libExports;
 var app = express();
-var MODULE_NAME = 'maxime-c16/TizenTube';
+var MODULE_NAME = 'maxime-c16/TizenTube@v1.13.2-proxy2';
 var MODULE_TYPE = 'gh';
 var corsOptions = {
   origin: '*',
