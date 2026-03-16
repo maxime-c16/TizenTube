@@ -24,6 +24,44 @@ function remapSponsorBlockUrl(input) {
   return value;
 }
 
+function showProxyBootMarker() {
+  if (!document || document.getElementById('tt-proxy-marker')) {
+    return;
+  }
+
+  var marker = document.createElement('div');
+  marker.id = 'tt-proxy-marker';
+  marker.textContent = 'TizenTube Proxy active';
+  marker.style.position = 'fixed';
+  marker.style.top = '24px';
+  marker.style.right = '24px';
+  marker.style.zIndex = '2147483647';
+  marker.style.padding = '10px 14px';
+  marker.style.background = 'rgba(11, 18, 33, 0.88)';
+  marker.style.color = '#d7ffe1';
+  marker.style.border = '1px solid rgba(88, 217, 140, 0.55)';
+  marker.style.borderRadius = '999px';
+  marker.style.fontFamily = 'sans-serif';
+  marker.style.fontSize = '18px';
+  marker.style.lineHeight = '1';
+  marker.style.pointerEvents = 'none';
+  marker.style.boxShadow = '0 12px 32px rgba(0, 0, 0, 0.35)';
+
+  function attachMarker() {
+    if (!document.body) {
+      return setTimeout(attachMarker, 50);
+    }
+    document.body.appendChild(marker);
+    setTimeout(function() {
+      if (marker.parentNode) {
+        marker.parentNode.removeChild(marker);
+      }
+    }, 4000);
+  }
+
+  attachMarker();
+}
+
 if (typeof tizenTubeOriginalFetch === 'function') {
   window.fetch = function(resource, init) {
     var remapped;
@@ -48,3 +86,6 @@ XMLHttpRequest.prototype.open = function(method, url) {
   arguments[1] = remapSponsorBlockUrl(url);
   return tizenTubeOriginalXHROpen.apply(this, arguments);
 };
+
+window.__TIZENTUBE_PROXY_ACTIVE = true;
+showProxyBootMarker();
